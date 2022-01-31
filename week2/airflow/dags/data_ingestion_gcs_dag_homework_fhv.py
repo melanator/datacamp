@@ -54,12 +54,12 @@ def upload_to_gcs(bucket, object_name, local_file):
 
 # NOTE: DAG declaration - using a Context Manager (an implicit way)
 with DAG(
-    dag_id="dag_homework_2",
+    dag_id="dag_homework_fhv",
     schedule_interval="0 6 1 * *",
     start_date=datetime(2019,1,1),
-    end_date=datetime(2020,12,12),
-    max_active_runs=2,
-    concurrency=2
+    end_date=datetime(2019,12,12),
+    max_active_runs=4,
+    concurrency=4
 ) as dag:
 
     download_dataset_task = BashOperator(
