@@ -62,12 +62,18 @@ x-airflow-common:
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/.google/credentials/google_credentials.json'
     GCP_PROJECT_ID: 'idyllic-ethos-339207'
     GCP_GCS_BUCKET: "datacamp_idyllic-ethos-339207"
+    PG_HOST: '${PG_HOST}'
+    PG_USER: '${PG_USER}'
+    PG_PASSWORD: '${PG_PASSWORD}'
+    PG_PORT: '${PG_PORT}'
+    PG_DATABASE: '${PG_DATABASE}'
 
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - /home/anton/.google/credentials/:/.google/credentials:ro
+    - /home/anton/livetracker/:/opt/airflow/livetracker
 
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
